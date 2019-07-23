@@ -1,5 +1,4 @@
-{
-	
+{	
   "author": [
     "Rob Brown"
   ],
@@ -8,11 +7,11 @@
     0,
     0
   ],
-  "description": "Say stuff",
+  "description": "Hello World",
   "hidden": true,
-  "install_msg": "Thank you for installing robcog!",
+  "install_msg": "Thank you for installing Hello World!",
   "requirements": [],
-  "short": "say stuff",
+  "short": "Say Hello World!",
   "tags": [
     "Rob Brown",
     "tools"
