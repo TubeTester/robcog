@@ -1,2 +1,2 @@
-# robcog
-RED Discord cog (test)
+# robs-cog
+RED Discord cogs
