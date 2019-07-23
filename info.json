@@ -1,9 +1,8 @@
 {
-    "AUTHOR" : "Rob Brown",
-    "INSTALL_MSG" : "Thanks for installing robcog.",
-    "NAME" : "robcog",
-    "SHORT" : "Put misbehaving users in timeout using role permissions.",
-    "DESCRIPTION" : "Put misbehaving users in timeout using role permissions. The default is to remove their permission to talk on ALL channels, but the overrides can be customized. Includes anti-evasion measures, voice mute support, modlog integration, timed or indefinite durations, designation of a timeout channel, and more.",
-	"REQUIREMENTS": [],
-    "TAGS" : ["rob"]
-}
+	{
+		"AUTHOR": "Rob Brown",
+		"INSTALL_MSG": "Thank you for installing robcog by Rob Brown",
+		"NAME": "robcog",
+		"SHORT": "Cogs by Rob Brown",
+		"DESCRIPTION": "Cogs for RED Discord Bot by Rob Brown"
+	}
