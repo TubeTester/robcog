@@ -1,2 +1,2 @@
-# robs-cog
+# robs-cogs
 RED Discord cogs
