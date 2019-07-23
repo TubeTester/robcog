@@ -12,7 +12,7 @@ class Robcog(getattr(commands, "Cog", object)):
         """This does stuff!"""
 
         #Your code will go here
-        await self.bot.say("I can do stuff!")
+        await ctx.send("I can do stuff!")
 
 def setup(bot):
     bot.add_cog(Robcog(bot))
