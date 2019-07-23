@@ -1,8 +1,7 @@
 import discord
 from redbot.core import Config, commands, checks
 
-class Robcog:
-    BaseCog = getattr(commands, "Cog", object)
+BaseCog = getattr(commands, "Cog", object)
 
 class Robcog(BaseCog):
     """My custom cog that does stuff!"""
