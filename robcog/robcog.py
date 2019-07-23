@@ -8,7 +8,7 @@ class Robcog(getattr(commands, "Cog", object)):
         self.bot = bot
 
     @commands.command()
-    async def say(self, ctx):
+    async def stuff(self, ctx):
         """This does stuff!"""
 
         #Your code will go here
