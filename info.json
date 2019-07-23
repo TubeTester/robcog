@@ -1,0 +1,20 @@
+{	
+  "author": [
+    "Rob Brown"
+  ],
+  "bot_version": [
+    3,
+    0,
+    0
+  ],
+  "description": "Hello World",
+  "hidden": true,
+  "install_msg": "Thank you for installing Hello World!",
+  "requirements": [],
+  "short": "Say Hello World!",
+  "tags": [
+    "Rob Brown",
+    "tools"
+  ],
+  "type": "COG"
+}
