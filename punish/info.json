@@ -1,0 +1,20 @@
+{
+  "author": [
+    "Rob Brown"
+  ],
+  "bot_version": [
+    3,
+    0,
+    0
+  ],
+  "description": "Punish a user with a timeout",
+  "hidden": true,
+  "install_msg": "Thank you for installing Punish",
+  "requirements": [],
+  "short": "Punish user",
+  "tags": [
+    "Rob Brown",
+    "tools"
+  ],
+  "type": "COG"
+}
