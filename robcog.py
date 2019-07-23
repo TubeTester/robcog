@@ -1,7 +1,7 @@
 from redbot.core import commands
 
-class Mycog(commands.Cog):
-    """My custom cog"""
+class Robcog(commands.Cog):
+    """Rob's custom cog"""
 
     @commands.command()
     async def mycom(self, ctx):
