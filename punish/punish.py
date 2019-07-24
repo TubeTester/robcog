@@ -9,9 +9,10 @@ import re
 import textwrap
 import time
 
-from .utils import checks
-from .utils.chat_formatting import pagify, box, warning, error, info, bold
-from .utils.dataIO import dataIO
+from redbot.core import checks
+from redbot.core.utils.chat_formatting import pagify, box, warning, error, info, bold
+from redbot.core import Config
+# from .utils.dataIO import dataIO
 
 try:
     import tabulate
