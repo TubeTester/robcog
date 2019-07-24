@@ -1,20 +1,7 @@
-{	
-  "author": [
-    "Rob Brown"
-  ],
-  "bot_version": [
-    3,
-    0,
-    0
-  ],
-  "description": "Hello World",
-  "hidden": true,
-  "install_msg": "Thank you for installing Hello World!",
-  "requirements": [],
-  "short": "Say Hello World!",
-  "tags": [
-    "Rob Brown",
-    "tools"
-  ],
-  "type": "COG"
+{
+        "AUTHOR" : "Rob Brown",
+        "INSTALL_MSG" : "Thanks for adding my repo!",
+        "NAME" : robs-cogs",
+        "SHORT" : "utility cogs.",
+        "DESCRIPTION" : "Utility cogs for RED V3"
 }
