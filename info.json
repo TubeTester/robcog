@@ -1,7 +1,8 @@
 {
-        "AUTHOR" : "Rob Brown",
-        "INSTALL_MSG" : "Thanks for adding my repo!",
-        "NAME" : "robs-cogs",
-        "SHORT" : "utility cogs.",
-        "DESCRIPTION" : "Utility cogs for RED V3"
+        "author" : "Rob Brown",
+        "install_msg" : "Thanks for adding my repo!",
+        "name" : "robs-cogs",
+        "short" : "utility cogs.",
+        "description" : "Utility cogs for RED V3",
+        "tags" : ["Utility", "Moderation"]
 }
