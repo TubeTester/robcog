@@ -276,7 +276,7 @@ def getmname(mid, server):
         return '(absent user #%s)' % mid
 
 
-class Punish:
+class Punish(getattr(commands, "Cog", object)):
     """
     Put misbehaving users in timeout where they are unable to speak, read, or
     do other things that can be denied using discord permissions. Includes
