@@ -1,20 +1,12 @@
 {	
-  "author": [
-    "Rob Brown"
-  ],
-  "bot_version": [
-    3,
-    0,
-    0
-  ],
-  "description": "Hello World",
-  "hidden": true,
+  "author": ["Rob Brown"],
   "install_msg": "Thank you for installing Hello World!",
-  "requirements": [],
+  "name": "Mod",
+  "disabled": false,
   "short": "Say Hello World!",
-  "tags": [
-    "Rob Brown",
-    "tools"
-  ],
+  "description": "Hello World",
+  "tags": ["Rob Brown", "tools"],
+  "hidden": false,
+  "min_bot_version": "3.1.4",
   "type": "COG"
 }
