@@ -424,4 +424,3 @@ class EmbedWizard:
 
 def setup(bot):
     bot.add_cog(EmbedWizard(bot))
-© 2019 GitHub, Inc.
