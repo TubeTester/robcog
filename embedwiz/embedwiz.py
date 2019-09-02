@@ -101,7 +101,7 @@ class EmbedWizard:
         try:
             self.analytics = CogAnalytics(self)
         except Exception as error:
-            self.bot.logger.exception(error)
+            ctx.bot.logger.exception(error)
             self.analytics = None
 
     @commands.group(pass_context=True, invoke_without_command=True)
