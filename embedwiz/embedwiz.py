@@ -19,7 +19,7 @@ from discord import Embed
 from discord.ext import commands
 
 #from redbot.core.utils import checks
-from . import checks
+from redbot.core import checks
 from redbot.core.utils.chat_formatting import warning, error, info
 
 
