@@ -133,11 +133,12 @@ class EmbedWizard:
 
     @checks.mod_or_permissions(manage_messages=True)
     @embedwiz.command(name='channel', pass_context=True)
-    async def embedwiz_channel(self, ctx, channel: discord.Channel, *, specification):
+    async def embedwiz_channel(self, ctx, *, specification):
         """
         Posts an embed in another channel according to the spec.
         See [p]help embedwiz for more information.
         """
+        channel = ctx.channel
         member = channel.server and channel.server.get_member(ctx.message.author.id)
         override = self._check_override(member)
 
