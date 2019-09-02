@@ -1,5 +1,5 @@
 {
-    "AUTHOR" : "Caleb Johnson <me@calebj.io> (calebj#0001)",
+    "AUTHOR" : "Caleb Johnson <me@calebj.io> (calebj#0001), Ported to Redbot V3 by Rob Brown.",
     "INSTALL_MSG" : "Done. This cog was sponsored by Aeternum#7967 (<@!173291729192091649>).\n\nDocumentation on how to use embedwiz can be found here: <https://github.com/calebj/calebj-cogs#embedwiz>",
     "NAME" : "Embed Wizard",
     "SHORT" : "Generate embeds with a command.",
