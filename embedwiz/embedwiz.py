@@ -94,7 +94,7 @@ def parse_timestamp(inputstr: str):
         return convert_iso8601(inputstr)
 
 
-class EmbedWizard:
+class EmbedWizard(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
