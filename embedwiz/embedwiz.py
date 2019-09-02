@@ -16,10 +16,10 @@ from urllib.parse import urlparse
 
 import discord
 from discord import Embed
-from discord.ext import commands
+#from discord.ext import commands
 
 #from redbot.core.utils import checks
-from redbot.core import checks
+from redbot.core import checks, commands
 from redbot.core.utils.chat_formatting import warning, error, info
 
 
@@ -129,7 +129,7 @@ class EmbedWizard:
         if ctx.invoked_subcommand is None:
             embed = await self._parse_embed(ctx, specification)
             if embed:
-                await self.bot.say(embed=embed)
+                await ctx.send(embed=embed)
 
     @checks.mod_or_permissions(manage_messages=True)
     @embedwiz.command(name='channel', pass_context=True)
@@ -143,20 +143,21 @@ class EmbedWizard:
         override = self._check_override(member)
 
         if channel != ctx.message.channel and not member:
-            await self.bot.say(error("Channel is private or you aren't in the server that channel belongs to."))
+            await ctx.send(error("Channel is private or you aren't in the server that channel belongs to."))
             return
         elif not channel.permissions_for(member).send_messages:
             msg = error("You don't have permissions to post there!")
-            await self.bot.say(msg)
+            await ctx.send(msg)
             return
 
         embed = await self._parse_embed(ctx, specification, force_author=not override)
 
         if embed:
-            await self.bot.send_message(channel, embed=embed)
+            channel = ctx.channel
+            await channel.send(embed=embed)
 
             if channel != ctx.message.channel:
-                await self.bot.say("Embed sent to %s." % channel.mention)
+                await ctx.send("Embed sent to %s." % channel.mention)
 
     @checks.mod_or_permissions(manage_messages=True)
     @embedwiz.command(name='delete', pass_context=True, no_pm=True)
@@ -170,13 +171,13 @@ class EmbedWizard:
 
         if not can_delete:
             msg = "I can't delete your command message! Posting anyway..."
-            await self.bot.say(warning(msg))
+            await ctx.send(warning(msg))
 
         tup = await self._parse_embed(ctx, specification, return_todelete=True)
 
         if tup:
             embed, to_delete = tup
-            await self.bot.say(embed=embed)
+            await ctx.send(embed=embed)
 
             if not can_delete:
                 return
@@ -188,31 +189,32 @@ class EmbedWizard:
                     continue
 
     @embedwiz.command(name='edit', pass_context=True)
-    async def embedwiz_edit(self, ctx, channel: discord.Channel, message_id: int, *, specification):
+    async def embedwiz_edit(self, ctx, message_id: int, *, specification):
         """
         Edits an existing embed according to the spec.
         See [p]help embedwiz for more information.
         """
+        channel = ctx.channel
         member = channel.server and channel.server.get_member(ctx.message.author.id)
 
         if channel != ctx.message.channel and not member:
-            await self.bot.say(error("Channel is private or you aren't in the server that channel belongs to."))
+            await ctx.send(error("Channel is private or you aren't in the server that channel belongs to."))
             return
 
         try:
             msg = await self.bot.get_message(channel, str(message_id))
         except discord.errors.NotFound:
-            await self.bot.say(error('Message not found.'))
+            await ctx.send(error('Message not found.'))
             return
         except discord.errors.Forbidden:
-            await self.bot.say(error('No permissions to read that channel.'))
+            await ctx.send(error('No permissions to read that channel.'))
             return
 
         if msg.author.id != self.bot.user.id:
-            await self.bot.say(error("That message isn't mine."))
+            await ctx.send(error("That message isn't mine."))
             return
         elif not msg.embeds:
-            await self.bot.say(error("That message doesn't have an embed."))
+            await ctx.send(error("That message doesn't have an embed."))
             return
 
         old_embed = msg.embeds[0]
@@ -221,15 +223,15 @@ class EmbedWizard:
         if override:
             pass
         elif 'author' not in old_embed or 'name' not in old_embed['author']:
-            await self.bot.say(error("That embed doesn't have an author set, and you aren't a mod or admin."))
+            await ctx.send(error("That embed doesn't have an author set, and you aren't a mod or admin."))
             return
         elif old_embed['author']['name'].split('(')[-1][:-1] != ctx.message.author.id:
-            await self.bot.say(error("That embed isn't yours."))
+            await ctx.send(error("That embed isn't yours."))
             return
 
         new_embed = await self._parse_embed(ctx, specification, force_author=not override)
         await self.bot.edit_message(msg, embed=new_embed)
-        await self.bot.say('Embed edited successfully.')
+        await ctx.send('Embed edited successfully.')
 
     def _check_override(self, member):
         server = isinstance(member, discord.Member) and member.server
@@ -256,7 +258,7 @@ class EmbedWizard:
         while specification.startswith(('-noauthor', '-kw')):
             if specification.startswith('-noauthor'):
                 if force_author:
-                    await self.bot.say(error("You cannot post using -noauthor."))
+                    await ctx.send(error("You cannot post using -noauthor."))
                     return
 
                 set_author = False
@@ -278,17 +280,17 @@ class EmbedWizard:
                 match = extract_param(param)
 
                 if param and not match:
-                    await self.bot.say(error('Invalid key=value expression: `%s`' % param))
+                    await ctx.send(error('Invalid key=value expression: `%s`' % param))
                     return
                 elif not param:
                     continue
 
                 param, value = match
                 if param in params:
-                    await self.bot.say(error('Duplicate `%s` field!' % param))
+                    await ctx.send(error('Duplicate `%s` field!' % param))
                     return
                 elif param not in VALID_FIELDS:
-                    await self.bot.say(error('Unknown field: `%s`' % param))
+                    await ctx.send(error('Unknown field: `%s`' % param))
                     return
 
                 params[param] = value
@@ -313,7 +315,7 @@ class EmbedWizard:
             if nfields != 7:
                 op = 'many' if nfields > 7 else 'few'
                 msg = 'Invalid specification: got too {} fields ({}, expected 7)'
-                await self.bot.say(error(msg.format(op, nfields)))
+                await ctx.send(error(msg.format(op, nfields)))
                 return
 
             timestamp = Embed.Empty
@@ -325,7 +327,7 @@ class EmbedWizard:
 
             if url_split:
                 if url:
-                    await self.bot.say(error('Duplicate `url` in markdown format title!'))
+                    await ctx.send(error('Duplicate `url` in markdown format title!'))
                     return
                 else:
                     title, url = url_split
@@ -347,11 +349,11 @@ class EmbedWizard:
             elif hasattr(discord.Color, colorstr):
                 color = getattr(discord.Color, colorstr)()
             else:
-                await self.bot.say(error(e.args[0]))
+                await ctx.send(error(e.args[0]))
                 return
 
         if url and not is_valid_url(url):
-            await self.bot.say(error('Invalid title URL!'))
+            await ctx.send(error('Invalid title URL!'))
             return
 
         if not footer or footer.lower() in ('none', ''):
@@ -360,43 +362,43 @@ class EmbedWizard:
         if not footer_icon or footer_icon.lower() in ('none', ''):
             footer_icon = Embed.Empty
         elif not is_valid_url(footer_icon):
-            await self.bot.say(error('Invalid footer icon URL!'))
+            await ctx.send(error('Invalid footer icon URL!'))
             return
 
         if not image or image.lower() in ('none', ''):
             image = Embed.Empty
         elif not is_valid_url(image):
-            await self.bot.say(error('Invalid image URL!'))
+            await ctx.send(error('Invalid image URL!'))
             return
 
         if not thumbnail or thumbnail.lower() in ('none', ''):
             thumbnail = Embed.Empty
         elif not is_valid_url(thumbnail):
-            await self.bot.say(error('Invalid thumbnail URL!'))
+            await ctx.send(error('Invalid thumbnail URL!'))
             return
 
         if timestamp:
             try:
                 timestamp = parse_timestamp(timestamp)
             except ValueError:
-                await self.bot.say(error('Invalid timestamp!'))
+                await ctx.send(error('Invalid timestamp!'))
                 return
 
         if body and body.lower() == 'prompt':
-            msg = await self.bot.say('Post the desired content of your embed, or "cancel" to '
+            msg = await ctx.send('Post the desired content of your embed, or "cancel" to '
                                      'cancel. Will wait up to one minute.')
             to_delete.append(msg)
 
             msg = await self.bot.wait_for_message(author=author, timeout=60,
                                                   channel=ctx.message.channel)
             if msg is None:
-                await self.bot.say(error('Timed out waiting for a reply.'))
+                await ctx.send(error('Timed out waiting for a reply.'))
                 return
             else:
                 to_delete.append(msg)
 
             if msg.content.lower().strip() == 'cancel':
-                await self.bot.say(info('Cancelled.'))
+                await ctx.send(info('Cancelled.'))
                 return
             else:
                 body = msg.content
