@@ -18,8 +18,8 @@ import discord
 from discord import Embed
 from discord.ext import commands
 
-from redbot.core..utils import checks
-from redbot.core..utils.chat_formatting import warning, error, info
+from redbot.core.utils import checks
+from redbot.core.utils.chat_formatting import warning, error, info
 
 
 VALID_FIELDS = {'url', 'title', 'color', 'timestamp', 'footer', 'footer_icon', 'image', 'thumbnail', 'body'}
