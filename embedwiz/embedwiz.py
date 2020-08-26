@@ -202,6 +202,7 @@ class EmbedWizard(commands.Cog):
         See [p]help embedwiz for more information.
         """
         channel = ctx.channel
+        
         #GuildChannel.guild
         member = channel.guild and channel.guild.get_member(ctx.message.author.id)
 
@@ -227,7 +228,7 @@ class EmbedWizard(commands.Cog):
             return
 
         old_embed = msg.embeds[0]
-        override = self._check_override(member)
+        override = self._check_override(ctx, member)
 
         if override:
             pass
@@ -242,7 +243,7 @@ class EmbedWizard(commands.Cog):
         await self.bot.edit_message(msg, embed=new_embed)
         await ctx.send('Embed edited successfully.')
 
-    def _check_override(self, member):
+    def _check_override(self, ctx,  member):
         server = isinstance(member, discord.Member) and member.guild
 
         if member and server:
