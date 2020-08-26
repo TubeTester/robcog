@@ -246,7 +246,7 @@ class EmbedWizard(commands.Cog):
         server = isinstance(member, discord.Member) and member.guild
 
         if member and server:
-            admin_role = self.bot.settings.get_server_admin(server)
+            admin_role = guild.settings.get_server_admin(server)
             mod_role = self.bot.settings.get_server_mod(server)
 
             return any((member.id == self.bot.settings.owner,
