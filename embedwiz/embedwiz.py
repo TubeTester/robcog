@@ -168,7 +168,7 @@ class EmbedWizard(commands.Cog):
         See [p]help embedwiz for more information.
         """
         channel = ctx.channel
-        msg = await self.bot.get_message(channel, message_id)
+        msg = await channel.get_message(channel, message_id)
         await self.bot.delete_message(msg)
         #await ctx.message.delete(message_id)
         return
