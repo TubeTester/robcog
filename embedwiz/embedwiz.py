@@ -240,7 +240,7 @@ class EmbedWizard(commands.Cog):
             return
 
         new_embed = await self._parse_embed(ctx, specification, force_author=not override)
-        await self.bot.edit_message(msg, embed=new_embed)
+        await channel.edit_message(msg, embed=new_embed)
         await ctx.send('Embed edited successfully.')
 
     def _check_override(self, ctx,  member):
