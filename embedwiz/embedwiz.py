@@ -242,9 +242,10 @@ class EmbedWizard(commands.Cog):
         new_embed = await self._parse_embed(ctx, specification, force_author=not override)
         #await channel.edit_message(msg, embed=new_embed)
         try:
-            msg.edit(Embed=new_embed)
+            await msg.edit(mbed=new_embed)
         except discord.HTTPException:
             await ctx.send(error("HTTP Exception trying to edit message. Fail!"))
+            return
         except discord.Forbidden:
             await ctx.send(error("You do not have permissions to edit message. Fail!"))
             return
