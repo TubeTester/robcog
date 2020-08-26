@@ -168,7 +168,7 @@ class EmbedWizard(commands.Cog):
         See [p]help embedwiz for more information.
         """
         
-        await ctx.channel.delete_message(message_id)
+        await ctx.message.delete_message(message_id)
         return
         
         #perms = ctx.channel.permissions_for(discord.Member)
