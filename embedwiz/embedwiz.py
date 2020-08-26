@@ -247,8 +247,8 @@ class EmbedWizard(commands.Cog):
 
         if member and server:
             guild_settings = ctx.bot.db.guild(ctx.guild)
-            admin_role_id = await guild_settings.admin_role()
-            mod_role_id = await guild_settings.mod_role()
+            admin_role_id = guild_settings.admin_role()
+            mod_role_id = guild_settings.mod_role()
             #admin_role = settings.get_server_admin(server)
             #mod_role = self.bot.settings.get_server_mod(server)
 
