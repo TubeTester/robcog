@@ -196,7 +196,7 @@ class EmbedWizard(commands.Cog):
                     continue
 
     @embedwiz.command(name='edit', pass_context=True)
-    async def embedwiz_edit(self, ctx, message_id: int, specification):
+    async def embedwiz_edit(self, ctx, message_id: int, *, specification):
         """
         Edits an existing embed according to the spec.
         See [p]help embedwiz for more information.
