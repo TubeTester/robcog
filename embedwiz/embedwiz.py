@@ -168,10 +168,11 @@ class EmbedWizard(commands.Cog):
         See [p]help embedwiz for more information.
         """
         #channel = ctx.channel
-        msg = await discord.utils.get_message(channel, message_id)
+        #msg = await discord.utils.get_message(channel, message_id)
         #await self.bot.delete_message(msg)
         #msg = await self.bot.get_message(channel, str(message_id))
-        #await message.delete()
+        msg = await channel.fetch_message(message_id)
+        await msg.delete()
         #return
         
         #perms = ctx.channel.permissions_for(discord.Member)
@@ -211,7 +212,8 @@ class EmbedWizard(commands.Cog):
             return
 
         try:
-            msg = await self.bot.get_message(channel, str(message_id))
+            #msg = await self.bot.get_message(channel, str(message_id))
+            msg = await channel.fetch_message(message_id)
         except discord.errors.NotFound:
             await ctx.send(error('Message not found.'))
             return
