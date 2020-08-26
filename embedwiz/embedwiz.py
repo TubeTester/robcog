@@ -178,10 +178,10 @@ class EmbedWizard(commands.Cog):
 
         if tup:
             embed, to_delete = tup
-            await ctx.send(embed=embed)
+            #await ctx.send(embed=embed)
 
-            if not can_delete:
-                return
+            #if not can_delete:
+                #return
 
             for msg in [ctx.message, *to_delete]:
                 try:
