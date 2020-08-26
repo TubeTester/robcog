@@ -243,7 +243,7 @@ class EmbedWizard(commands.Cog):
         await ctx.send('Embed edited successfully.')
 
     def _check_override(self, member):
-        server = isinstance(member, discord.Member) and member.server
+        server = isinstance(member, discord.Member) and member.guild
 
         if member and server:
             admin_role = self.bot.settings.get_server_admin(server)
