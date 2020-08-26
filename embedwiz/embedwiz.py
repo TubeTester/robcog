@@ -170,9 +170,9 @@ class EmbedWizard(commands.Cog):
         #channel = ctx.channel
         #msg = await channel.get_message(channel, message_id)
         #await self.bot.delete_message(msg)
-        msg = await self.bot.get_message(channel, str(message_id))
+        #msg = await self.bot.get_message(channel, str(message_id))
         #await message.delete()
-        return
+        #return
         
         #perms = ctx.channel.permissions_for(discord.Member)
         #can_delete = perms.manage_messages
@@ -192,7 +192,8 @@ class EmbedWizard(commands.Cog):
 
             for msg in [ctx.message, *to_delete]:
                 try:
-                    await self.bot.delete_message(msg)
+                    #await self.bot.delete_message(msg)
+                    msg.delete()
                 except discord.HTTPException:
                     continue
 
