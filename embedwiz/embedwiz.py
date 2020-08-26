@@ -162,15 +162,15 @@ class EmbedWizard(commands.Cog):
 
     @checks.mod_or_permissions(manage_messages=True)
     @embedwiz.command(name='delete', pass_context=True, no_pm=True)
-    async def embedwiz_delete(self, ctx, message_id: int):
+    async def embedwiz_delete(self, ctx, discord.Message.id):
         """
         Posts an embed according to the spec after deleting the original message.
         See [p]help embedwiz for more information.
         """
-        channel = ctx.channel
-        msg = await channel.get_message(channel, message_id)
-        await self.bot.delete_message(msg)
-        #await ctx.message.delete(message_id)
+        #channel = ctx.channel
+        #msg = await channel.get_message(channel, message_id)
+        #await self.bot.delete_message(msg)
+        await Message.delete()
         return
         
         #perms = ctx.channel.permissions_for(discord.Member)
