@@ -245,6 +245,7 @@ class EmbedWizard(commands.Cog):
 
     def _check_override(self, ctx,  member):
         server = isinstance(member, discord.Member) and member.guild
+        return True
 
         if member and server:
             guild_settings = ctx.bot.db.guild(ctx.guild)
