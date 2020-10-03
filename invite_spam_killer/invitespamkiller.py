@@ -75,7 +75,8 @@ class InviteSpamKiller(commands.Cog):
         #if ctx.cog is self:
         msg = error("Created Invite.")
         await ctx.send(msg)
-        channel = guild.get_channel(601966081711800355)
+        channel = invite.channel 
+        #guild.get_channel(601966081711800355)
         if channel is not None:
             await channel.send('Invite Created by {0}.'.format(member))
 
