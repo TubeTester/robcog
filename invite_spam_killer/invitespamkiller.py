@@ -85,7 +85,7 @@ class InviteSpamKiller(commands.Cog):
     @commands.group(pass_context=True, invoke_without_command=True)
     async def invitecreate(self, invite: discord.Invite):        
         member = "ROB"
-        guild = discord.Guild
+        guild = ctx.Guild
         channel = (
             discord.utils.find(lambda x: x.name in CHANNELS, guild.text_channels)
             or guild.system_channel
