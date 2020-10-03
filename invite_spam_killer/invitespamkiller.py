@@ -80,7 +80,7 @@ class InviteSpamKiller(commands.Cog):
             #self.bot.logger.exception(error)
             self.analytics = None
             
-    @commands.Cog.listener()
+    #@commands.Cog.listener()
     async def invite_create(self, invite: discord.Invite):        
         member = invite.inviter
         channel = (
