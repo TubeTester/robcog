@@ -25,6 +25,8 @@ CHANNELS = [
     "configdotjpg",
 ]
 
+Intents.invites = True
+
 def extract_md_link(inputstr: str):
     match = re.match(r'^\[([^\]]*)\]\(([^)]*)\)$', inputstr)
     if match:
