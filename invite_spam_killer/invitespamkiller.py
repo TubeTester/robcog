@@ -75,7 +75,6 @@ class InviteSpamKiller(commands.Cog):
         """
         Setup Invite Spam Killer
         """
-        //put setup code here
         msg = error("Setup Stub.")
         await ctx.send(msg)
 
