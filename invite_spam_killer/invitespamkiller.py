@@ -105,7 +105,7 @@ class InviteSpamKiller(commands.Cog):
             self.analytics.command(ctx)
             
     async def on_invite_create(self, command, ctx):
-        if ctx.cog is self
+        if ctx.cog is self:
             msg = error("Setup Stub.")
             await ctx.send(msg)
 
