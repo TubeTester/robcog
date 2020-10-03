@@ -1,0 +1,8 @@
+{
+    "AUTHOR" : "Rob Brown.",
+    "INSTALL_MSG" : "Done.",
+    "NAME" : "invite_spam_killer",
+    "SHORT" : "stop btc bot invites",
+    "DESCRIPTION" : "Ban, or remove roles from btc bot's that create an invite after they join.",
+    "TAGS" : ["utility"]
+}
