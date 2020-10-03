@@ -81,7 +81,9 @@ class InviteSpamKiller(commands.Cog):
             self.analytics = None
             
     #@commands.Cog.listener()
-    async def invite_create(self, invite: discord.Invite):        
+    @checks.mod_or_permissions(manage_messages=True)
+    @commands.group(pass_context=True, invoke_without_command=True)
+    async def invitecreate(self, invite: discord.Invite):        
         member = invite.inviter
         channel = (
             discord.utils.find(lambda x: x.name in CHANNELS, guild.text_channels)
@@ -126,6 +128,6 @@ class InviteSpamKiller(commands.Cog):
 
 def setup(bot):
     n = Welcome(bot)
-    bot.add_listener(n.invite_create, "on_invite_create")
+    bot.add_listener(n.invitecreate, "on_invite_create")
     bot.add_cog(n)
     #bot.add_cog(InviteSpamKiller(bot))
