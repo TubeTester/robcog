@@ -60,8 +60,10 @@ def parse_timestamp(inputstr: str):
 
 
 class InviteSpamKiller(commands.Cog):
-    @commands.Cog.listener()    
-    async def on_invite_create(self, command, ctx):
+    
+    #@commands.Cog.listener()
+    @client.event
+    async def on_invite_create(invite):
         if ctx.cog is self:
             msg = error("Setup Stub.")
             await ctx.send(msg)
