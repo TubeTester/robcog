@@ -21,7 +21,9 @@ from redbot.core import checks, commands
 from redbot.core.utils.chat_formatting import warning, error, info
 
 
-VALID_FIELDS = {'url', 'title', 'color', 'timestamp', 'footer', 'footer_icon', 'image', 'thumbnail', 'body'}
+CHANNELS = [
+    "configdotjpg",
+]
 
 def extract_md_link(inputstr: str):
     match = re.match(r'^\[([^\]]*)\]\(([^)]*)\)$', inputstr)
@@ -58,6 +60,12 @@ def parse_timestamp(inputstr: str):
     else:
         return convert_iso8601(inputstr)
 
+    #if ctx.cog is self:
+        #msg = error("Created Invite.")
+        #await ctx.send(msg)
+        #channel = invite.channel 
+        #guild.get_channel(601966081711800355)        
+        #if channel is not None:
 
 class InviteSpamKiller(commands.Cog):
     
@@ -71,14 +79,16 @@ class InviteSpamKiller(commands.Cog):
             self.analytics = None
             
     @commands.Cog.listener()
-    async def on_invite_create(self, invite: discord.Invite):
-        #if ctx.cog is self:
-        #msg = error("Created Invite.")
-        #await ctx.send(msg)
-        #channel = invite.channel 
-        #guild.get_channel(601966081711800355)        
-        #if channel is not None:
-        await invite.user.send('Invite Created by {0}.'.format(member))
+    async def on_invite_create(self, invite: discord.Invite):        
+        member = invite.inviter
+        channel = (
+            discord.utils.find(lambda x: x.name in CHANNELS, guild.text_channels)
+            or guild.system_channel
+            or next(
+                (x for x in guild.text_channels if x.permissions_for(guild.me).send_messages), None
+            )
+        )
+        await channel.send('Invite Created by {0}.'.format(member))
 
     @checks.mod_or_permissions(manage_messages=True)
     @commands.group(pass_context=True, invoke_without_command=True)
