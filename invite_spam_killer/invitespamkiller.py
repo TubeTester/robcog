@@ -60,6 +60,13 @@ def parse_timestamp(inputstr: str):
 
 
 class InviteSpamKiller(commands.Cog):
+    @commands.Cog.listener()    
+    async def on_invite_create(self, command, ctx):
+        if ctx.cog is self:
+            msg = error("Setup Stub.")
+            await ctx.send(msg)
+            
+            
     def __init__(self, bot):
         self.bot = bot
 
@@ -77,7 +84,6 @@ class InviteSpamKiller(commands.Cog):
         """
         msg = error("Setup Stub.")
         await ctx.send(msg)
-
 
     def _check_override(self, ctx,  member):
         server = isinstance(member, discord.Member) and member.guild
@@ -97,19 +103,10 @@ class InviteSpamKiller(commands.Cog):
                         discord.utils.get(member.roles, name=mod_role)))
         else:
             return False
-
-    
-
+        
     async def on_command(self, command, ctx):
         if ctx.cog is self and self.analytics:
             self.analytics.command(ctx)
-           
-    @commands.Cog.listener()    
-    async def on_invite_create(self, command, ctx):
-        if ctx.cog is self:
-            msg = error("Setup Stub.")
-            await ctx.send(msg)
-
 
 def setup(bot):
     bot.add_cog(InviteSpamKiller(bot))
