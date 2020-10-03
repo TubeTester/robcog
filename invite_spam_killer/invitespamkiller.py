@@ -103,7 +103,8 @@ class InviteSpamKiller(commands.Cog):
     async def on_command(self, command, ctx):
         if ctx.cog is self and self.analytics:
             self.analytics.command(ctx)
-            
+           
+    @commands.Cog.listener()    
     async def on_invite_create(self, command, ctx):
         if ctx.cog is self:
             msg = error("Setup Stub.")
