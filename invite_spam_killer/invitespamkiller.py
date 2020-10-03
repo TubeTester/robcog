@@ -71,10 +71,10 @@ class InviteSpamKiller(commands.Cog):
             self.analytics = None
             
     @commands.Cog.listener()
-    async def on_invite_create(self, invite):
+    async def on_invite_create(self, invite: discord.Invite):
         #if ctx.cog is self:
-        msg = error("Created Invite.")
-        await ctx.send(msg)
+        #msg = error("Created Invite.")
+        #await ctx.send(msg)
         channel = invite.channel 
         #guild.get_channel(601966081711800355)
         if channel is not None:
