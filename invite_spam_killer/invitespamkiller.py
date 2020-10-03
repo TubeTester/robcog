@@ -60,15 +60,7 @@ def parse_timestamp(inputstr: str):
 
 
 class InviteSpamKiller(commands.Cog):
-    @commands.Cog.listener()
-    async def on_invite_create(self, invite):
-        if ctx.cog is self:
-            msg = error("Created Invite.")
-            await ctx.send(msg)
-            channel = member.guild.system_channel
-            if channel is not None:
-                await channel.send('Invite Created by {0}.'.format(member))
-            
+    
     def __init__(self, bot):
         self.bot = bot
 
@@ -77,6 +69,15 @@ class InviteSpamKiller(commands.Cog):
         except Exception as error:
             #self.bot.logger.exception(error)
             self.analytics = None
+            
+    @commands.Cog.listener()
+    async def on_invite_create(self, invite):
+        #if ctx.cog is self:
+        msg = error("Created Invite.")
+        await ctx.send(msg)
+        channel = member.guild.system_channel
+        if channel is not None:
+            await channel.send('Invite Created by {0}.'.format(member))
 
     @checks.mod_or_permissions(manage_messages=True)
     @commands.group(pass_context=True, invoke_without_command=True)
