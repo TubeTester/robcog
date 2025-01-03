@@ -15,4 +15,4 @@ class helloworld_cog(getattr(commands, "Cog", object)):
         await ctx.send("Hello World!")
         
 def setup(bot):
-    bot.add_cog(helloworld_cog(bot))
+    await bot.add_cog(helloworld_cog(bot))
