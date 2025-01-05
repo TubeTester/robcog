@@ -69,7 +69,7 @@ class helloworld_cog(getattr(commands, "Cog", object)):
         await ctx.send('' .join(members))
         ###await ctx.send(last_message)
 
-    @client.listen
+    @commands.listen
     async def on_raw_typing(channel, user, when):
         await ctx.send("{} is typing message in {} : {}".format(user.name, channel, when))
 
