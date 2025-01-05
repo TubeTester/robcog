@@ -21,11 +21,11 @@ class helloworld_cog(getattr(commands, "Cog", object)):
         members.append('```')
         get_members = ([member for member in guild.members if not member.bot])  
         for member in get_members:  
-            members.append(member.name)
+            members.append(member.name) + ', \r'
             ###await ctx.send(f'{member}')
 
         members.append('``` DONE!');
-        await ctx.send(', \r' .join(members))
+        await ctx.send('' .join(members))
         
 def setup(bot):
     bot.add_cog(helloworld_cog(bot))
