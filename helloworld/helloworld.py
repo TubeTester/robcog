@@ -27,9 +27,9 @@ class helloworld_cog(getattr(commands, "Cog", object)):
       ###await ctx.send(', ' + str(guild.members))
 
     @client.command(name='members')
-    async def _members(ctx, guild_id: int):
+    async def _members(self, ctx):
         members = []
-        guild = client.get_guild(guild_id)
+        guild = ctx.guild
         for m in guild.members():
             members.append(m.name)
             await ctx.send(f'{m}')
