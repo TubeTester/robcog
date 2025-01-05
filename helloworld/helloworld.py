@@ -17,6 +17,26 @@ class helloworld_cog(getattr(commands, "Cog", object)):
         await ctx.send(datetime.date)
 
     @commands.command()
+    async def lastMessage(self, ctx, users_id: int):
+        oldestMessage = None
+        for channel in ctx.guild.text_channels:
+            fetchMessage = await channel.history().find(lambda m: m.author.id == users_id)
+            if fetchMessage is None:
+                continue
+
+
+            if oldestMessage is None:
+                oldestMessage = fetchMessage
+            else:
+                if fetchMessage.created_at > oldestMessage.created_at:
+                    oldestMessage = fetchMessage
+
+        if (oldestMessage is not None):
+            await ctx.send(f"Oldest message is {oldestMessage.content}")
+        else:
+            await ctx.send("No message found.")
+
+    @commands.command()
     async def listm(self, ctx): 
         guild = ctx.guild
         ###cut_date = datetime.utcnow() - timedelta(days=15)
@@ -36,32 +56,14 @@ class helloworld_cog(getattr(commands, "Cog", object)):
                     ###mmessage = message.content
             last_message(id)
             members.append(member.name + ',' + str(id) + ', '+ mmessage + ' \r')
-            last_message = [message async for message in member.history(limit=1, oldest_first=True)]
+            ###last_message = [message async for message in member.history(limit=1, oldest_first=True)]
             ###await ctx.send(f'{member}')
 
         members.append(f'``` DONE! \r');
         await ctx.send('' .join(members))
-        await ctx.send(last_message)
+        ###await ctx.send(last_message)
 
-    @commands.command()
-    async def lastMessage(self, ctx, users_id: int):
-        oldestMessage = None
-        for channel in ctx.guild.text_channels:
-            fetchMessage = await channel.history().find(lambda m: m.author.id == users_id)
-            if fetchMessage is None:
-                continue
-
-
-            if oldestMessage is None:
-                oldestMessage = fetchMessage
-            else:
-                if fetchMessage.created_at > oldestMessage.created_at:
-                    oldestMessage = fetchMessage
-
-        if (oldestMessage is not None):
-            await ctx.send(f"Oldest message is {oldestMessage.content}")
-        else:
-            await ctx.send("No message found.")
+   
         
 def setup(bot):
     bot.add_cog(helloworld_cog(bot))
