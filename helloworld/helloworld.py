@@ -25,11 +25,11 @@ class helloworld_cog(getattr(commands, "Cog", object)):
         for member in get_members:
             mmessage = ''
             async for message in member.history(limit=1, oldest_first=True):
-                if message.author == member:                    
+                if message.author == member.name:                    
                     mmessage = message.content
                
             members.append(member.name + ',' + mmessage + ' \r')
-            ###last_message = [message async for message in channel.history(limit=1, oldest_first=True)]
+            last_message = [message async for message in member.history(limit=1, oldest_first=True)]
             ###await ctx.send(f'{member}')
 
         members.append(f'``` DONE! \r');
