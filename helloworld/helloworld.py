@@ -28,7 +28,7 @@ class helloworld_cog(getattr(commands, "Cog", object)):
             mmessage = ''
             async for message in member.history(limit=1, oldest_first=True):
                 m = await member.fetch_message(message.id)
-                if(len(m.content) > 0)
+                if(len(m.content) > 0):
                     await ctx.send(m.content)
                 ###if message.author == member:                    
                     ###mmessage = message.content
