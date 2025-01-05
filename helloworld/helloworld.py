@@ -1,5 +1,5 @@
 import discord
-import datetime
+import datetime.utcnow
 from redbot.core import Config, commands, checks
 
 class helloworld_cog(getattr(commands, "Cog", object)):
