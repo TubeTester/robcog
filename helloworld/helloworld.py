@@ -25,6 +25,15 @@ class helloworld_cog(getattr(commands, "Cog", object)):
             print(member.name)
             
       ###await ctx.send(', ' + str(guild.members))
+
+    @client.command(name='members')
+    async def _members(ctx, guild_id: int):
+        members = []
+        guild = client.get_guild(guild_id)
+        for m in guild.members():
+            members.append(m.name)
+            await ctx.send(f'{m}')
+            await ctx.send('DONE!')
         
 def setup(bot):
     bot.add_cog(helloworld_cog(bot))
