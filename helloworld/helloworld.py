@@ -16,13 +16,15 @@ class helloworld_cog(getattr(commands, "Cog", object)):
 
     @commands.command()
     async def list_members(self, ctx): 
-        m = ""
         guild = ctx.guild
         members = []  
-        get_members = ([m for m in guild.members])  
-        for bot in get_members:  
-            members.append(m.name)  
-      await ctx.send(', ' + str(guild.members))
+        ### get_members = ([m for m in guild.members])  
+        ### for bot in get_members:  
+            ###members.append(m.name)  
+        for member in guild.fetch_members(limit=150):
+            print(member.name)
+            
+      ###await ctx.send(', ' + str(guild.members))
         
 def setup(bot):
     bot.add_cog(helloworld_cog(bot))
