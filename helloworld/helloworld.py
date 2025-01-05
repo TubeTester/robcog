@@ -22,12 +22,12 @@ class helloworld_cog(getattr(commands, "Cog", object)):
         members = []  
         members.append('```')
         get_members = ([member for member in guild.members if not member.bot])  
-        for member in get_members:  
+        for member in get_members:
+            mmessage = ''
             async for message in member.history(limit=1, oldest_first=True):
                 if message.author == member:                    
                     mmessage = message.content
-                else:
-                    mmesage = ''
+               
             members.append(member.name + ',' + mmessage + ' \r')
             ###last_message = [message async for message in channel.history(limit=1, oldest_first=True)]
             ###await ctx.send(f'{member}')
