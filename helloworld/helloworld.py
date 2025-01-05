@@ -13,6 +13,16 @@ class helloworld_cog(getattr(commands, "Cog", object)):
 
         #Your code will go here
         await ctx.send("Hello World!")
+
+    @commands.command()
+    async def list_members(ctx):  
+      guild = ctx.guild
+      members = []  
+      get_members = ([m for m in guild.members])  
+      for bot in get_members:  
+        members.append(m.name)  
+ 
+      await ctx.send(', '.join(members))
         
 def setup(bot):
     bot.add_cog(helloworld_cog(bot))
