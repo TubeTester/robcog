@@ -16,14 +16,14 @@ class helloworld_cog(getattr(commands, "Cog", object)):
         await ctx.send("Hello World!")
 
     @commands.command()
-    async def list_members(self, ctx): 
+    async def listm(self, ctx): 
         guild = ctx.guild
-        cut_date = datetime.utcnow() - timedelta(days=15)
+        ###cut_date = datetime.utcnow() - timedelta(days=15)
         members = []  
         members.append('```')
         get_members = ([member for member in guild.members if not member.bot])  
         for member in get_members:  
-            async for message in channel.history(limit=200, oldest_first=True):
+            async for message in history(limit=200, oldest_first=True):
                 if message.author == member:                    
                     members.append(member.name + ',' + message.content + ' \r')
                 else:
