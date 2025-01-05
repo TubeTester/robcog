@@ -18,7 +18,7 @@ class helloworld_cog(getattr(commands, "Cog", object)):
     async def list_members(self, ctx):  
       guild = ctx.guild
        
-      await ctx.send(', '.join(guild.members))
+      await ctx.send(', '.(guild.members))
         
 def setup(bot):
     bot.add_cog(helloworld_cog(bot))
