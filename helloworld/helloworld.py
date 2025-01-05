@@ -19,7 +19,7 @@ class helloworld_cog(getattr(commands, "Cog", object)):
         guild = ctx.guild
         members = []  
         get_members = ([member for member in guild.members if not member.bot])  
-        ctx.send('```');
+        await ctx.send('```');
         for member in get_members:  
             members.append(member.name)
             await ctx.send(f'{member}')
