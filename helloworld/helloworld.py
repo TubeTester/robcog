@@ -14,7 +14,7 @@ class helloworld_cog(getattr(commands, "Cog", object)):
 
         #Your code will go here
         await ctx.send("Hello World!")
-        await ctx.send(str(datetime.date))
+        await ctx.send(datetime.date)
 
     @commands.command()
     async def listm(self, ctx): 
@@ -27,8 +27,9 @@ class helloworld_cog(getattr(commands, "Cog", object)):
             id = member.id
             mmessage = ''
             async for message in member.history(limit=1, oldest_first=True):
-                if message.author == member:                    
-                    mmessage = message.content
+                await ctx.send(message)
+                ###if message.author == member:                    
+                    ###mmessage = message.content
                
             members.append(member.name + ',' + str(id) + ', '+ mmessage + ' \r')
             last_message = [message async for message in member.history(limit=1, oldest_first=True)]
