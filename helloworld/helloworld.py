@@ -26,7 +26,7 @@ class helloworld_cog(getattr(commands, "Cog", object)):
             await ctx.send(f'{member}')
 
         members.append('``` DONE!');
-        await ctx.send(' ' str.join(members)
+        await ctx.send(' ' .join(members))
         
 def setup(bot):
     bot.add_cog(helloworld_cog(bot))
