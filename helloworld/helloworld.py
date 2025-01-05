@@ -54,7 +54,7 @@ class helloworld_cog(getattr(commands, "Cog", object)):
                     
                 ###if message.author == member:                    
                     ###mmessage = message.content
-            last_message(id)
+            lastMessage(id)
             members.append(member.name + ',' + str(id) + ', '+ mmessage + ' \r')
             ###last_message = [message async for message in member.history(limit=1, oldest_first=True)]
             ###await ctx.send(f'{member}')
