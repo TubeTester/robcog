@@ -2,6 +2,9 @@ import discord
 import datetime
 from redbot.core import Config, commands, checks
 
+intents = discord.Intents.all()
+client = discord.Client(intents=intents)
+
 class helloworld_cog(getattr(commands, "Cog", object)):
     """Hello World V3 cog!"""
 
