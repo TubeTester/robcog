@@ -24,7 +24,7 @@ class helloworld_cog(getattr(commands, "Cog", object)):
             async for message in channel.history(limit=200, oldest_first=True):
                 if message.author == member:                    
                     members.append(member.name + ',' + message.content + ' \r')
-                else
+                else:
                     members.append(member.name + ', \r')
             ###last_message = [message async for message in channel.history(limit=1, oldest_first=True)]
             ###await ctx.send(f'{member}')
