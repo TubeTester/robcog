@@ -22,20 +22,8 @@ class helloworld_cog(getattr(commands, "Cog", object)):
         for member in get_members:  
             members.append(member.name)
             await ctx.send(f'{member}')
-            await ctx.send('DONE!')
-        ###for member in guild.fetch_members(limit=150):
-           ### print(member.name)
             
-      ###await ctx.send(', ' + str(guild.members))
-
-    @commands.command(name='members')
-    async def _members(self, ctx):
-        members = []
-        guild = ctx.guild
-        for m in guild.members():
-            members.append(m.name)
-            await ctx.send(f'{m}')
-            await ctx.send('DONE!')
+        await ctx.send('DONE!')
         
 def setup(bot):
     bot.add_cog(helloworld_cog(bot))
