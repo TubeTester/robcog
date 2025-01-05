@@ -18,7 +18,7 @@ class helloworld_cog(getattr(commands, "Cog", object)):
     @commands.command()
     async def list_members(self, ctx): 
         guild = ctx.guild
-        cut_date = datetime.Today() - timedelta(days=15)
+        cut_date = datetime.today() - timedelta(days=15)
         members = []  
         members.append('```')
         get_members = ([member for member in guild.members if not member.bot])  
