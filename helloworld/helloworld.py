@@ -46,6 +46,9 @@ class helloworld_cog(getattr(commands, "Cog", object)):
         for member in get_members:
             id = member.id
             mmessage = ''
+            for channel in ctx.guild.text_channels:
+                if(len(mmessage) == 0):
+                    mmessage = await channel.history(limit=1).flatten()
             ###async for message in member.history(limit=1, oldest_first=True):
                 ###m = await member.fetch_message(message.id)
                 ###if(len(m.content) > 0):
@@ -54,7 +57,7 @@ class helloworld_cog(getattr(commands, "Cog", object)):
                     
                 ###if message.author == member:                    
                     ###mmessage = message.content
-            lastMessage(id)
+            
             members.append(member.name + ',' + str(id) + ', '+ mmessage + ' \r')
             ###last_message = [message async for message in member.history(limit=1, oldest_first=True)]
             ###await ctx.send(f'{member}')
