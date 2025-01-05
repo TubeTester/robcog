@@ -14,6 +14,7 @@ class helloworld_cog(getattr(commands, "Cog", object)):
 
         #Your code will go here
         await ctx.send("Hello World!")
+        await ctx.send(datetime.date.month + '-' + datetime.date.day + '-'  + datetime.date.year
 
     @commands.command()
     async def listm(self, ctx): 
