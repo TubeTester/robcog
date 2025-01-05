@@ -14,7 +14,7 @@ class helloworld_cog(getattr(commands, "Cog", object)):
         #Your code will go here
         await ctx.send("Hello World!")
 
-    @commands.command()
+    @commands.command(name='members')
     async def list_members(self, ctx): 
         guild = ctx.guild
         members = []  
