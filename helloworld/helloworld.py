@@ -30,7 +30,7 @@ class helloworld_cog(getattr(commands, "Cog", object)):
             ###last_message = [message async for message in channel.history(limit=1, oldest_first=True)]
             ###await ctx.send(f'{member}')
 
-        members.append(f'``` DONE! \r {cut_date');
+        members.append(f'``` DONE! \r {cut_date}');
         await ctx.send('' .join(members))
         await ctx.send(last_message)
         
