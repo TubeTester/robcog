@@ -14,7 +14,7 @@ class helloworld_cog(getattr(commands, "Cog", object)):
 
         #Your code will go here
         await ctx.send("Hello World!")
-        await ctx.send(datetime.date.month + '-' + datetime.date.day + '-'  + datetime.date.year)
+        await ctx.send(str(datetime.date.month) + '-' + str(datetime.date.day) + '-'  + str(datetime.date.year))
 
     @commands.command()
     async def listm(self, ctx): 
@@ -24,13 +24,13 @@ class helloworld_cog(getattr(commands, "Cog", object)):
         members.append('```')
         get_members = ([member for member in guild.members if not member.bot])  
         for member in get_members:
-            id - member.id
+            id = member.id
             mmessage = ''
             async for message in member.history(limit=1, oldest_first=True):
                 if message.author == member.name:                    
                     mmessage = message.content
                
-            members.append(member.name + ',' + id + ' \r')
+            members.append(member.name + ',' + str(id) + ' \r')
             last_message = [message async for message in member.history(limit=1, oldest_first=True)]
             ###await ctx.send(f'{member}')
 
