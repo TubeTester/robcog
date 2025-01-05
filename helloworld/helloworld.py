@@ -23,7 +23,7 @@ class helloworld_cog(getattr(commands, "Cog", object)):
         members.append('```')
         get_members = ([member for member in guild.members if not member.bot])  
         for member in get_members:  
-            async for message in history(limit=200, oldest_first=True):
+            async for message in member.history(limit=200, oldest_first=True):
                 if message.author == member:                    
                     members.append(member.name + ',' + message.content + ' \r')
                 else:
