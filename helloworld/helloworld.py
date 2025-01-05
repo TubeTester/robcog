@@ -17,6 +17,7 @@ class helloworld_cog(getattr(commands, "Cog", object)):
     @commands.command()
     async def list_members(self, ctx): 
         guild = ctx.guild
+        cut_date = datetime.Today() - timedelta(days=15)
         members = []  
         members.append('```')
         get_members = ([member for member in guild.members if not member.bot])  
@@ -29,7 +30,7 @@ class helloworld_cog(getattr(commands, "Cog", object)):
             ###last_message = [message async for message in channel.history(limit=1, oldest_first=True)]
             ###await ctx.send(f'{member}')
 
-        members.append('``` DONE!');
+        members.append(f'``` DONE! \r {cut_date');
         await ctx.send('' .join(members))
         await ctx.send(last_message)
         
