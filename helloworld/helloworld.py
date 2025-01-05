@@ -21,7 +21,7 @@ class helloworld_cog(getattr(commands, "Cog", object)):
         ### get_members = ([m for m in guild.members])  
         ### for bot in get_members:  
             ###members.append(m.name)  
-        for member in guild.fetch_members(limit=150):
+        await for member in guild.fetch_members(limit=150):
             print(member.name)
             
       ###await ctx.send(', ' + str(guild.members))
