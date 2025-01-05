@@ -21,7 +21,7 @@ class helloworld_cog(getattr(commands, "Cog", object)):
         get_members = ([member for member in guild.members if not member.bot])  
         for member in get_members:  
             members.append(member.name)
-            await ctx.send(f'{m}')
+            await ctx.send(f'{member}')
             await ctx.send('DONE!')
         ###for member in guild.fetch_members(limit=150):
            ### print(member.name)
